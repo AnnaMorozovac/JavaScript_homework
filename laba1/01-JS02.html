@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практична робота — Домашнє завдання</title>
+    <style>
+        h1 {
+            color: red;
+            font-size: 4em;
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<p>Сторінка привітання <br> "Hello WORLD"</p>
+
+<button id="btnShow">Привітати СВІТ</button>
+<button id="btnReset" class="hidden">Скинути</button>
+
+<script>
+
+    const btnShow = document.getElementById("btnShow");
+    const btnReset = document.getElementById("btnReset");
+
+    btnShow.onclick = function() {
+        btnShow.style.display = "none";
+
+        const h1 = document.createElement("h1");
+        h1.id = "big";
+        h1.textContent = "Я ВІТАЮ ТЕБЕ СВІТ!!!";
+        document.body.appendChild(h1);
+
+        btnReset.classList.remove("hidden");
+    };
+
+    btnReset.onclick = function() {
+        const h1 = document.getElementById("big");
+        if (h1) {
+            h1.remove();
+        }
+        btnShow.style.display = "inline-block";
+        btnReset.classList.add("hidden");
+    };
+</script>
+</body>
+</html>
