@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Лампочка УВІМКНУТИ/ВИМКНУТИ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #lamp {
+            width: 120px;
+            height: auto;
+            opacity: 1;
+            transition: opacity 1s ease, box-shadow 1s ease;
+        }
+
+        #lamp.on {
+            filter: drop-shadow(0 0 20px yellow);
+        }
+
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Лампочка ON/OFF</h1>
+
+<img id="lamp" src="images/lamp.PNG" alt="Лампочка">
+
+<br>
+<button id="btnOn">Увімкнути</button>
+<button id="btnOff">Вимкнути</button>
+
+<script>
+    const lamp = document.getElementById('lamp');
+    const btnOn = document.getElementById('btnOn');
+    const btnOff = document.getElementById('btnOff');
+
+    btnOn.addEventListener('click', () => {
+        lamp.src = "images/lampON.png";
+        lamp.classList.add('on');
+    });
+
+    btnOff.addEventListener('click', () => {
+        lamp.src = "images/lamp.PNG";
+        lamp.classList.remove('on');
+    });
+</script>
+
+</body>
+</html>

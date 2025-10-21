@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Симулятор світлофору</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #traffic {
+            width: 150px;
+            height: auto;
+            margin: 20px auto;
+            transition: opacity 0.5s ease;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background: #555;
+            color: white;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #777;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Симулятор світлофору</h1>
+
+<img id="traffic" src="images/trafficlLightsOFF.PNG" alt="Світлофор">
+
+<br>
+<button id="btnRed">Червоне світло</button>
+<button id="btnYellow">Жовте світло</button>
+<button id="btnGreen">Зелене світло</button>
+
+<script>
+    const traffic = document.getElementById('traffic');
+
+    document.getElementById('btnRed').addEventListener('click', () => {
+        traffic.src = "images/trafficlLightsRED.PNG";
+    });
+
+    document.getElementById('btnYellow').addEventListener('click', () => {
+        traffic.src = "images/trafficlLightsYELLOW.PNG";
+    });
+
+    document.getElementById('btnGreen').addEventListener('click', () => {
+        traffic.src = "images/trafficlLightsGREEN.PNG";
+    });
+</script>
+
+</body>
+</html>

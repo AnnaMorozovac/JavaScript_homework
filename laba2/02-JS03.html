@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна 03 - Виведення інформації</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .temp {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Виведення інформації засобами JavaScript</h1>
+
+<div class="temp m1">Результат з innerHTML з'явиться тут:</div>
+
+<div class="temp m2">Результат document.write буде нижче:</div>
+
+<div class="temp m3">Модальне вікно alert з'явиться при завантаженні сторінки.</div>
+
+<div class="temp m4">Перевір консоль браузера (F12 → Console).</div>
+
+<script>
+
+    const sum = 0.1 + 0.2;
+    const result = document.querySelector('.m1');
+    result.innerHTML = "В JavaScript:<br>0.1 + 0.2 = " + sum;
+    result.style.color = '#2d264a';
+
+
+    document.write("<p><strong>document.write(9 + 10):</strong> " + (9 + 10) + "</p>");
+
+    window.alert("Важлива інформація!");
+
+    console.log("console.log(20 + 17):", 20 + 17);
+</script>
+
+</body>
+</html>
