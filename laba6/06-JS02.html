@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 2</title>
+    <script language="JavaScript">
+        var timeStr, dateStr;
+        function clock()
+        {
+            var now = new Date();
+            // час
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            timeStr = "" + hours;
+            timeStr += ((minutes < 10) ? ":0" : ":") + minutes;
+            timeStr += ((seconds < 10) ? ":0" : ":") + seconds;
+            document.clock.time.value = timeStr;
+
+            // дата
+            var date = now.getDate();
+            var month = now.getMonth() + 1;
+            var year = now.getFullYear();
+            dateStr = "" + month;
+            dateStr += ((date < 10) ? "/0" : "/") + date;
+            dateStr += "/" + year;
+            document.clock.date.value = dateStr;
+
+            setTimeout("clock()", 1000);
+        }
+    </script>
+</head>
+<body onLoad="clock()">
+<form name="clock">
+    Час: <input type="text" name="time" size="8"><br>
+    Дата: <input type="text" name="date" size="8">
+</form>
+</body>
+</html>
