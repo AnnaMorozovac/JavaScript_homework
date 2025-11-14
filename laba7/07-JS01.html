@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 1.1</title>
+    <script>
+        function changeH2() {
+            let el = document.getElementById("line1");
+            if (el.style.color === "white") {
+                el.style.color = "black";
+                el.style.background = "yellow";
+            } else {
+                el.style.color = "white";
+                el.style.background = "blue";
+            }
+        }
+
+        function changeP() {
+            let el = document.all.line2;
+            if (el.style.color === "white") {
+                el.style.color = "red";
+                el.style.background = "white";
+            } else {
+                el.style.color = "white";
+                el.style.background = "green";
+            }
+        }
+
+        function changeDiv() {
+            let el = document.getElementById("line3");
+            if (el.style.color === "white") {
+                el.style.color = "black";
+                el.style.background = "yellow";
+            } else {
+                el.style.color = "white";
+                el.style.background = "blue";
+            }
+        }
+    </script>
+</head>
+<body>
+<h2 id="line1" onclick="changeH2()" style="background:yellow; color:black">
+    Доступ до властивостей і методів
+</h2>
+<p id="line2" onclick="changeP()" style="background:white; color:red">
+    Колекція all
+</p>
+<div id="line3" onclick="changeDiv()" style="background:yellow; color:black">
+    Метод getElementById ()
+</div>
+</body>
+</html>
