@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Тригонометричні функції</title>
+    <script>
+        function checkInput(fld) {
+            let x = fld.value;
+            if (isNaN(x) || x === "") {
+                alert("Введіть правильне число!");
+                fld.focus();
+                fld.select();
+            }
+        }
+
+        function calculate() {
+            let angle = document.getElementById("angle").value;
+            let func = document.getElementById("func").value;
+
+            if (isNaN(angle) || angle === "") {
+                alert("Введіть правильне число!");
+                return;
+            }
+            let radians = angle * Math.PI / 180;
+
+            let expr = "Math." + func + "(" + radians + ")";
+            let result = eval(expr);
+
+            document.getElementById("output").innerHTML =
+                "Результат: " + func + "(" + angle + "°) = " + result.toFixed(4);
+        }
+    </script>
+</head>
+<body>
+<h2>Обчислення тригонометричних функцій</h2>
+<p>Введіть значення кута (у градусах):</p>
+<input type="text" id="angle" size="6" onchange="checkInput(this)">
+<p>Виберіть функцію:</p>
+<select id="func">
+    <option value="sin">sin</option>
+    <option value="cos">cos</option>
+    <option value="tan">tan</option>
+</select>
+<br><br>
+<button onclick="calculate()">Обчислити</button>
+<p id="output"></p>
+</body>
+</html>

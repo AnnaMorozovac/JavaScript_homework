@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Замовлення меблів</title>
+    <script>
+        function validateForm() {
+            let product = document.forms["F1"]["product"].value;
+            let material = document.forms["F1"]["material"].value;
+            let quantity = document.forms["F1"]["quantity"].value;
+            let errors = "";
+
+            if (product === "") errors += "Виберіть виріб\n";
+            if (material === "") errors += "Виберіть матеріал\n";
+            if (quantity === "" || isNaN(quantity) || quantity <= 0) errors += "Введіть кількість\n";
+
+            if (errors !== "") {
+                alert("Помилка:\n" + errors);
+                return false;
+            } else {
+                document.F1.action = "result.php";
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+<h2>Замовлення меблів</h2>
+<form name="F1" method="POST" onsubmit="return validateForm()">
+    Виріб:
+    <select name="product">
+        <option value="">-- виберіть --</option>
+        <option value="Шафа">Шафа</option>
+        <option value="Стіл">Стіл</option>
+        <option value="Сервант">Сервант</option>
+    </select><br><br>
+
+    Матеріал:
+    <select name="material">
+        <option value="">-- виберіть --</option>
+        <option value="Дуб">Дуб</option>
+        <option value="Горіх">Горіх</option>
+        <option value="Бук">Бук</option>
+    </select><br><br>
+
+    Кількість:
+    <input type="text" name="quantity" size="6"><br><br>
+
+    <input type="submit" value="Відправити замовлення">
+</form>
+</body>
+</html>
