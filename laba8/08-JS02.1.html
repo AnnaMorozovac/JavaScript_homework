@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 2.1</title>
+    <style>
+        #line2 {font-size: 24pt; color:black; background:white;}
+        #line3 {background:white; color:black;}
+        #line4 {background:white; color:black;}
+    </style>
+    <script>
+        let toggle = false;
+
+        function clickLine2() {
+            let el = document.getElementById("line2");
+            if (!toggle) {
+                el.style.fontSize = "48pt";
+                el.style.color = "white";
+                el.style.background = "lightblue";
+                toggle = true;
+            } else {
+                el.style.fontSize = "24pt";
+                el.style.color = "black";
+                el.style.background = "white";
+                toggle = false;
+            }
+        }
+
+        function downLine3() {
+            document.getElementById("line3").style.background = "green";
+        }
+        function upLine3() {
+            document.getElementById("line3").style.background = "yellow";
+        }
+
+        function overLine4() {
+            document.getElementById("line4").style.background = "red";
+        }
+        function outLine4() {
+            document.getElementById("line4").style.background = "lightblue";
+        }
+    </script>
+</head>
+<body>
+<h2>П'ять подій з мишкою</h2>
+<p id="line2" onclick="clickLine2()">Клацніть на мене мишкою</p>
+<p id="line3" onmousedown="downLine3()" onmouseup="upLine3()">
+    На цьому тексті натисніть, потримайте і відпустіть ліву кнопку мишки
+</p>
+<div id="line4" onmouseover="overLine4()" onmouseout="outLine4()">
+    Повільно проведіть курсором мишки по цій написи
+</div>
+</body>
+</html>
