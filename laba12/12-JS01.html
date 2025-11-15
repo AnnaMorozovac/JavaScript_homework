@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Тригонометрична таблиця</title>
+    <script>
+        function isNumb(fld) {
+            let t = fld.value;
+            for (let i = 0; i < t.length; i++) {
+                let ch = t.charAt(i);
+                if ((ch < "0" || ch > "9") && !(ch == "," || ch == ".")) {
+                    alert("Не цифра");
+                    fld.focus();
+                    fld.select();
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function openTable() {
+            let start = document.getElementById("start").value;
+            let end = document.getElementById("end").value;
+            let step = document.getElementById("step").value;
+            let func = document.getElementById("func").value;
+
+            if (start === "" || end === "" || step === "") {
+                alert("Заповніть усі поля!");
+                return;
+            }
+
+            let newWin = window.open("", "", "width=600,height=400");
+            newWin.document.write("<h2 align='center'>Таблиця значень " + func + "</h2>");
+            newWin.document.write("<table border=1 align='center' id='tab1'>");
+            newWin.document.write("<tr><th>Кут (градуси)</th><th>Кут (радіани)</th><th>" + func + "</th></tr>");
+
+            start = parseFloat(start);
+            end = parseFloat(end);
+            step = parseFloat(step);
+
+            for (let angle = start; angle <= end; angle += step) {
+                let rad = angle * Math.PI / 180;
+                let val = eval("Math." + func + "(" + rad + ")");
+                newWin.document.write("<tr><td>" + angle + "</td><td>" + rad.toFixed(4) + "</td><td>" + val.toFixed(4) + "</td></tr>");
+            }
+
+            newWin.document.write("</table>");
+        }
+    </script>
+</head>
+<body>
+<h2>Тригонометричні функції</h2>
+<p>Функція:
+    <select id="func">
+        <option value="sin">sin</option>
+        <option value="cos">cos</option>
+        <option value="tan">tg</option>
+    </select>
+</p>
+<p>Початковий кут: <input type="text" id="start" onchange="isNumb(this)"></p>
+<p>Кінцевий кут: <input type="text" id="end" onchange="isNumb(this)"></p>
+<p>Крок: <input type="text" id="step" onchange="isNumb(this)"></p>
+<button onclick="openTable()">Обчислити</button>
+</body>
+</html>

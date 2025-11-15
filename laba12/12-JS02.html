@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Облік товарів</title>
+    <script>
+        function updateTable() {
+            let product = document.getElementById("product").value;
+            let newQty = document.getElementById("qty").value;
+            let newPrice = document.getElementById("price").value;
+
+            let table = document.getElementById("tab1");
+            let rowIndex = -1;
+
+            for (let i = 1; i < table.rows.length; i++) {
+                if (table.rows[i].cells[0].innerHTML === product) {
+                    rowIndex = i;
+                    break;
+                }
+            }
+
+            if (rowIndex === -1) {
+                alert("Товар не знайдено!");
+                return;
+            }
+
+            let r = table.rows[rowIndex];
+            if (newPrice !== "") r.cells[1].innerHTML = newPrice;
+            if (newQty !== "") r.cells[2].innerHTML = newQty;
+
+            let sum = 0;
+            for (let i = 1; i < table.rows.length; i++) {
+                let price = parseFloat(table.rows[i].cells[1].innerHTML);
+                let qty = parseFloat(table.rows[i].cells[2].innerHTML);
+                let cost = price * qty;
+                table.rows[i].cells[3].innerHTML = cost.toFixed(2);
+                sum += cost;
+            }
+            document.getElementById("total").innerHTML = sum.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+<h2 align="center">Облік надходження товарів</h2>
+<table border="1" align="center" id="tab1">
+    <tr><th>Товар</th><th>Ціна за одиницю</th><th>Кількість</th><th>Вартість</th></tr>
+    <tr><td>Стіл</td><td>500</td><td>2</td><td>1000</td></tr>
+    <tr><td>Шафа</td><td>800</td><td>1</td><td>800</td></tr>
+    <tr><td>Сервант</td><td>300</td><td>3</td><td>900</td></tr>
+</table>
+<p align="center">Сумарна вартість: <b id="total">2700</b></p>
+
+<h3 align="center">Змінити дані</h3>
+<p align="center">
+    Виберіть товар:
+    <select id="product">
+        <option value="Стіл">Стіл</option>
+        <option value="Шафа">Шафа</option>
+        <option value="Сервант">Сервант</option>
+    </select><br><br>
+    Нова ціна за одиницю: <input type="text" id="price" size="5"><br>
+    Нова кількість: <input type="text" id="qty" size="5"><br>
+    <button onclick="updateTable()">Оновити</button>
+</p>
+</body>
+</html>
