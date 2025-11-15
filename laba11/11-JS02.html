@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Перетягування квадрата</title>
+</head>
+<body onload="init()">
+<h2 align="center" style="color:mediumpurple">Перетягування квадрата мишкою</h2>
+<div id="container" style="position:relative; width:500px; height:500px;
+     background-color:lightgray; margin:auto; border:1px solid black;">
+    <div id="kv" style="position:absolute; left:10px; top:10px;
+         width:50px; height:50px; background-color:lightskyblue;"></div>
+</div>
+
+<script>
+    let flag = false;
+
+    function init() {
+        let kv = document.getElementById("kv");
+        kv.onmousedown = zachvat;
+        kv.onmouseup = osvobodi;
+        kv.onmousemove = dragIt;
+    }
+
+    function zachvat() {
+        flag = true;
+    }
+
+    function osvobodi() {
+        flag = false;
+    }
+
+    function dragIt(evt) {
+        let sobytie = evt ? evt : window.event;
+        if (flag) {
+            let container = document.getElementById("container");
+            let kv = document.getElementById("kv");
+
+            let newTop = sobytie.clientY - container.offsetTop - 25;
+            let newLeft = sobytie.clientX - container.offsetLeft - 25;
+
+            if (newTop < 0) newTop = 0;
+            if (newLeft < 0) newLeft = 0;
+            if (newTop > container.clientHeight - kv.clientHeight)
+                newTop = container.clientHeight - kv.clientHeight;
+            if (newLeft > container.clientWidth - kv.clientWidth)
+                newLeft = container.clientWidth - kv.clientWidth;
+
+            kv.style.top = newTop + "px";
+            kv.style.left = newLeft + "px";
+        }
+    }
+</script>
+</body>
+</html>

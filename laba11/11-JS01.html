@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Рух квадрата по колу</title>
+    <script>
+        let R = 100;
+        let t = 0;
+        let proc;
+        let st = false;
+
+        function Start_stop() {
+            if (st) {
+                clearInterval(proc);
+                st = false;
+                document.getElementById("btn").innerHTML = "Запустити";
+            } else {
+                proc = setInterval(move, 50);
+                st = true;
+                document.getElementById("btn").innerHTML = "Стоп";
+            }
+        }
+
+        function move() {
+            let x = R * Math.cos(t) + 200;
+            let y = R * Math.sin(t) + 200;
+            document.getElementById("kv").style.left = x + "px";
+            document.getElementById("kv").style.top = y + "px";
+            t += 0.05;
+        }
+    </script>
+</head>
+<body>
+<button id="btn" onclick="Start_stop()"
+        style="position:absolute; left:20px; top:20px;">Запустити</button>
+<div id="kv" style="position:absolute; width:50px; height:50px;
+     background-color:lightskyblue; left:200px; top:200px;"></div>
+</body>
+</html>
