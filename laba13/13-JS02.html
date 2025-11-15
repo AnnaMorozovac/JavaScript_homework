@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+
+<p id="text">Я вчу мови програмування!</p>
+<div>
+    <button onclick="changeCSS()">Зміни стиль!</button>
+</div>
+
+<script>
+    function changeCSS() {
+        let p = document.getElementById("text");
+        p.style.color = "orange";
+        p.style.fontSize = "20px";
+        p.style.fontFamily = "Comic Sans MS";
+    }
+</script>
+
+</body>
+</html>

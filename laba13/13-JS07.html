@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<select id="country">
+    <option value="ua">Україна</option>
+    <option value="pl">Польща</option>
+    <option value="de">Німеччина</option>
+</select>
+
+<select id="cities"></select>
+
+<p id="result"></p>
+
+<script>
+    const data = {
+        ua: ["Київ", "Львів", "Одеса", "Харків"],
+        pl: ["Варшава", "Краків", "Вроцлав"],
+        de: ["Берлін", "Мюнхен", "Гамбург"]
+    };
+
+    let country = document.getElementById("country");
+    let cities = document.getElementById("cities");
+    let result = document.getElementById("result");
+
+    country.onchange = function () {
+        let selected = this.value;
+        cities.innerHTML = "";
+
+        data[selected].forEach(city => {
+            let option = document.createElement("option");
+            option.textContent = city;
+            cities.appendChild(option);
+        });
+
+        result.textContent =
+            "Країна: " + country.options[country.selectedIndex].text +
+            ", Місто: " + data[selected][0];
+    };
+
+    cities.onchange = function () {
+        result.textContent =
+            "Країна: " + country.options[country.selectedIndex].text +
+            ", Місто: " + this.value;
+    };
+
+    country.dispatchEvent(new Event("change"));
+</script>
+
+</body>
+</html>

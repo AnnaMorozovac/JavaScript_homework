@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+
+<button id="b1">Синій</button>
+<button id="b2">Рожевий</button>
+<button id="b3">Коричневий</button>
+<a href="#" id="link">Наведіть мене</a>
+
+<script>
+    document.getElementById("b1").onclick = () => {
+        document.body.style.background = "blue";
+    };
+
+    document.getElementById("b2").ondblclick = () => {
+        document.body.style.background = "pink";
+    };
+
+    let b3 = document.getElementById("b3");
+    b3.onmousedown = () => document.body.style.background = "brown";
+    b3.onmouseup   = () => document.body.style.background = "white";
+
+    let link = document.getElementById("link");
+    link.onmouseover = () => document.body.style.background = "yellow";
+    link.onmouseout  = () => document.body.style.background = "white";
+</script>
+
+</body>
+</html>
