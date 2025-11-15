@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Еліпс – мозаїка</title>
+    <script>
+        function drawEllipse() {
+            let a = parseInt(document.getElementById("a").value);
+            let b = parseInt(document.getElementById("b").value);
+            let container = document.getElementById("ellipse");
+            container.innerHTML = "";
+
+            for (let t = 0; t <= 2 * Math.PI; t += 0.01) {
+                let x = a * Math.cos(t) + 200;
+                let y = b * Math.sin(t) + 200;
+                let dot = document.createElement("div");
+                dot.style.position = "absolute";
+                dot.style.left = x + "px";
+                dot.style.top = y + "px";
+                dot.style.width = "2px";
+                dot.style.height = "2px";
+                dot.style.backgroundColor = "black";
+                container.appendChild(dot);
+            }
+        }
+    </script>
+</head>
+<body>
+<h2>Еліпс – мозаїка</h2>
+Велика піввісь: <input type="text" id="a" value="100">
+Мала піввісь: <input type="text" id="b" value="50">
+<button onclick="drawEllipse()">Побудувати</button>
+<div id="ellipse" style="position:relative; width:500px; height:500px;"></div>
+</body>
+</html>

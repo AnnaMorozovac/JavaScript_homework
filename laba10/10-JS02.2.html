@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Еліпс з осями</title>
+    <script>
+        function drawCanvas() {
+            let a = parseInt(document.getElementById("a").value);
+            let b = parseInt(document.getElementById("b").value);
+            let canvas = document.getElementById("canvas");
+            let ctx = canvas.getContext("2d");
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            let cx = canvas.width / 2;
+            let cy = canvas.height / 2;
+
+            ctx.beginPath();
+            ctx.ellipse(cx, cy, a, b, 0, 0, 2 * Math.PI);
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(cx - a, cy);
+            ctx.lineTo(cx + a, cy);
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(cx, cy - b);
+            ctx.lineTo(cx, cy + b);
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+        }
+    </script>
+</head>
+<body>
+<h2>Побудова Еліпса</h2>
+Горизонтальна а=: <input type="text" id="a" value="100">
+Вертикальна b=: <input type="text" id="b" value="50">
+<button onclick="drawCanvas()">Побудувати</button>
+<br><br>
+<canvas id="canvas" width="400" height="400" style="border:1px solid black"></canvas>
+</body>
+</html>
